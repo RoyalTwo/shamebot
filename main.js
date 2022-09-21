@@ -32,15 +32,37 @@ client.on("messageCreate", async msg => {
         // this is the worst code i have ever written, perfect
         // only works with a single server, and has to be reset if it ever goes down
         // or as i like to call it, "well-designed"
-        if (msg.content == (parseInt(lastMessage.content) + 1)) {
-            console.log('its fine');
+        if (msg.content == (parseInt(lastMessage.content) + 1) && lastMessage.author.username != msg.author.username) {
             lastMessage = msg;
         }
         else {
             msg.delete()
                 .then(deletedMsg => {
+                    // behold the river of if statements
+                    // i hope no future employers see this :D
+                    if (lastMessage.author.username == msg.author.username) {
+                        countDisc.send(`${deletedMsg.author}:
+                                > little over eager there, huh buddy? wait for someone else :heart:`
+                        )
+                        return;
+                    }
+                    if (msg.content == parseInt(lastMessage.content)) {
+                        countDisc.send(`${deletedMsg.author}:
+                                > woah woah woah, that's already taken`
+                        )
+                        return;
+                    }
+                    if (parseInt(lastMessage.content)) {
+                        countDisc.send(`${deletedMsg.author}:
+                                > oop, not time for that number right now`
+                        )
+                        return;
+                    }
                     console.log(`Deleted message from ${deletedMsg.author.username}`);
-                    countDisc.send('bad human. do better next time :)');
+                    countDisc.send(`${deletedMsg.author}:
+                    > ${deletedMsg.content}
+that doesn't look like a number :rage:`);
+                    // i hate string literals sometimes
                 })
                 .catch(console.error);
         }
