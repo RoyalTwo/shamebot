@@ -11,27 +11,24 @@ const client = new Client({
     ],
 });
 
-client.once('ready', () => {
+
+let lastMessage = null;
+let countChan = null;
+let countDisc = null;
+
+client.once('ready', async () => {
     console.log('Ready!');
+    countChan = await client.channels.fetch('1007371696212279356');
+    countDisc = await client.channels.fetch('1022161639040102451')
+
+    const lastMessageCollection = await countChan.messages.fetch({ limit: 1 })
+    lastMessage = lastMessageCollection.first()
 });
 
-let monitoredChannel = null;
-let lastMessage = null;
 // should use separate files but it's a simple bot
 client.on("messageCreate", async msg => {
-    // really should use slash commands instead and check for permissions
-    if (msg.content.includes('+channel ')) {
-        const msgArray = msg.content.split(' ');
-        // add error handling later
-        const channelID = msgArray[1];
-        monitoredChannel = await client.channels.fetch(channelID);
-
-        const lastMessageCollection = await monitoredChannel.messages.fetch({ limit: 1 })
-        lastMessage = lastMessageCollection.first()
-    }
-
     if (msg.author.bot) return;
-    if (msg.channelId == monitoredChannel.id) {
+    if (msg.channelId == countChan.id) {
         // this is the worst code i have ever written, perfect
         // only works with a single server, and has to be reset if it ever goes down
         // or as i like to call it, "well-designed"
@@ -43,7 +40,7 @@ client.on("messageCreate", async msg => {
             msg.delete()
                 .then(deletedMsg => {
                     console.log(`Deleted message from ${deletedMsg.author.username}`);
-                    monitoredChannel.send('bad human. do better next time :)');
+                    countDisc.send('bad human. do better next time :)');
                 })
                 .catch(console.error);
         }
