@@ -11,7 +11,6 @@ const client = new Client({
     ],
 });
 
-
 let lastMessage = null;
 let countChan = null;
 let countDisc = null;
@@ -39,7 +38,6 @@ client.on("messageCreate", async msg => {
             msg.delete()
                 .then(deletedMsg => {
                     // behold the river of if statements
-                    // i hope no future employers see this :D
                     if (lastMessage.author.username == msg.author.username) {
                         countDisc.send(`${deletedMsg.author}:
                                 > little over eager there, huh buddy? wait for someone else :heart:`
