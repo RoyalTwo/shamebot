@@ -24,13 +24,9 @@ client.once('ready', async () => {
     lastMessage = lastMessageCollection.first()
 });
 
-// should use separate files but it's a simple bot
 client.on("messageCreate", async msg => {
     if (msg.author.bot) return;
     if (msg.channelId == countChan.id) {
-        // this is the worst code i have ever written, perfect
-        // only works with a single server, and has to be reset if it ever goes down
-        // or as i like to call it, "well-designed"
         if (msg.content == (parseInt(lastMessage.content) + 1) && lastMessage.author.username != msg.author.username) {
             lastMessage = msg;
         }
