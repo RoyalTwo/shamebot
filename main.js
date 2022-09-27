@@ -63,4 +63,5 @@ that doesn't look like a number :rage:`);
     }
 })
 
+// eslint-disable-next-line no-undef
 client.login(process.env.BOT_TOKEN);
