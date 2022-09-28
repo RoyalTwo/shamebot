@@ -17,8 +17,11 @@ let countDisc = null;
 
 client.once('ready', async () => {
     console.log('Ready!');
-    countChan = await client.channels.fetch('1007371696212279356');
-    countDisc = await client.channels.fetch('1022161639040102451');
+    // remove and switch to database
+    /*countChan = await client.channels.fetch('1007371696212279356');
+    countDisc = await client.channels.fetch('1022161639040102451');*/
+    countChan = await client.channels.fetch('1004202416314515466');
+    countDisc = await client.channels.fetch('1003409641130164234');
 
     const lastMessageCollection = await countChan.messages.fetch({ limit: 1 });
     lastMessage = lastMessageCollection.first();
@@ -35,20 +38,20 @@ client.on("messageCreate", async msg => {
                 .then(deletedMsg => {
                     // behold the river of if statements
                     if (lastMessage.author.username == msg.author.username) {
-                        countDisc.send(`${deletedMsg.author}:
-                                > little over eager there, huh buddy? wait for someone else :heart:`
+                        countDisc.send(`${deletedMsg.author}
+                                little over eager there, huh buddy? wait for someone else :heart:`
                         );
                         return;
                     }
                     if (msg.content == parseInt(lastMessage.content)) {
                         countDisc.send(`${deletedMsg.author}:
-                                > woah woah woah, that's already taken`
+                                woah woah woah, that's already taken`
                         );
                         return;
                     }
-                    if (parseInt(lastMessage.content)) {
+                    if (parseInt(msg.content)) {
                         countDisc.send(`${deletedMsg.author}:
-                                > oop, not time for that number right now`
+                                oop, not time for that number right now`
                         );
                         return;
                     }
