@@ -40,45 +40,49 @@ client.once('ready', async () => {
 client.on("messageCreate", async msg => {
     if (msg.author.bot) return;
     if (msg.channelId == countChan.id) {
-        if (msg.content == (parseInt(lastMessage.content) + 1) && lastMessage.author.username != msg.author.username) {
-            lastMessage = msg;
+        if (!parseInt(msg.content)) {
+            msg.delete().then(() => {
+                let rand = Math.floor(Math.random() * (resMessages.notNum.length - 1));
+                countDisc.send(`${transformHeader(msg)}
+                ${resMessages.notNum[rand]}`);
+            });
+            return;
         }
         else {
-            msg.delete()
-                .then(deletedMsg => {
-                    console.log(deletedMsg.content[0]);
-                    // behold the river of if statements
-                    if (lastMessage.author.username == msg.author.username) {
-                        let rand = Math.floor(Math.random() * (resMessages.sameAuthor.length - 1));
-                        countDisc.send(`${transformHeader(deletedMsg)}
-                        ${resMessages.sameAuthor[rand]}`);
-                        return;
-                    }
-                    if (msg.content == parseInt(lastMessage.content)) {
-                        let rand = Math.floor(Math.random() * (resMessages.takenNum.length - 1));
-                        countDisc.send(`${transformHeader(deletedMsg)}
-                        ${resMessages.takenNum[rand]}`);
-                        return;
-                    }
-                    if (deletedMsg.content[0] == "0") {
-                        let rand = Math.floor(Math.random() * (resMessages.leadingZero.length - 1));
-                        countDisc.send(`${transformHeader(deletedMsg)} ${resMessages.takenNum[rand]}`);
-                        return;
-                    }
-                    if (parseInt(msg.content)) {
-                        let rand = Math.floor(Math.random() * (resMessages.wrongNum.length - 1));
-                        countDisc.send(`${transformHeader(deletedMsg)}
-                        ${resMessages.wrongNum[rand]}`);
-                        return;
-                    }
+            if (lastMessage.author.username == msg.author.username) {
+                msg.delete().then(() => {
+                    let rand = Math.floor(Math.random() * (resMessages.sameAuthor.length - 1));
+                    countDisc.send(`${transformHeader(msg)}
+                    ${resMessages.sameAuthor[rand]}`);
+                });
+                return;
+            }
 
-                    let rand = Math.floor(Math.random() * (resMessages.notNum.length - 1));
-                    countDisc.send(`${transformHeader(deletedMsg)}
-                    ${resMessages.notNum[rand]}`);
+            if (msg.content == parseInt(lastMessage.content)) {
+                msg.delete().then(() => {
+                    let rand = Math.floor(Math.random() * (resMessages.takenNum.length - 1));
+                    countDisc.send(`${transformHeader(msg)}
+                    ${resMessages.takenNum[rand]}`);
+                });
+                return;
+            }
+            if (msg.content[0] == "0") {
+                msg.delete().then(() => {
+                    let rand = Math.floor(Math.random() * (resMessages.leadingZero.length - 1));
+                    countDisc.send(`${transformHeader(msg)} ${resMessages.leadingZero[rand]}`);
+                });
+                return;
+            }
+            if (msg.content != (parseInt(lastMessage.content) + 1)) {
+                msg.delete().then(() => {
+                    let rand = Math.floor(Math.random() * (resMessages.wrongNum.length - 1));
+                    countDisc.send(`${transformHeader(msg)}
+                    ${resMessages.wrongNum[rand]}`);
+                });
+                return;
+            }
 
-                    console.log(`Deleted message from ${deletedMsg.author.username}`);
-                })
-                .catch(console.error);
+            lastMessage = msg;
         }
     }
 });
