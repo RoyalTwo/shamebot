@@ -1,0 +1,12 @@
+{
+    "header": [
+        "${deletedMsg.author}",
+        "> ${deletedMsg.content}"
+    ],
+    "content": {
+        "sameAuthor": null,
+        "takenNum": null,
+        "wrongNum": null,
+        "notNum": null
+    }
+}
