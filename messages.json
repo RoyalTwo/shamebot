@@ -1,12 +1,25 @@
 {
     "header": [
-        "${deletedMsg.author}",
-        "> ${deletedMsg.content}"
+        "{AUTHOR}",
+        "\n> {MSG}"
     ],
     "content": {
-        "sameAuthor": null,
-        "takenNum": null,
-        "wrongNum": null,
-        "notNum": null
+        "sameAuthor": [
+            "\nlittle over eager there, huh buddy? wait for someone else :heart:",
+            "\ntest2",
+            "\nteaehast",
+            "\nteashrt",
+            "\nteaaegst",
+            "\nteast"
+        ],
+        "takenNum": [
+            "\nwoah woah woah, that's already taken"
+        ],
+        "wrongNum": [
+            "\noop, not time for that number right now"
+        ],
+        "notNum": [
+            "\nthat doesn't look like a number :rage:"
+        ]
     }
 }
