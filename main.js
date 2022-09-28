@@ -17,9 +17,13 @@ let countDisc = null;
 
 client.once('ready', async () => {
     console.log('Ready!');
+
     // remove and switch to database
+    // hyland server channels
     /*countChan = await client.channels.fetch('1007371696212279356');
     countDisc = await client.channels.fetch('1022161639040102451');*/
+
+    // testing server channels
     countChan = await client.channels.fetch('1004202416314515466');
     countDisc = await client.channels.fetch('1003409641130164234');
 
@@ -39,27 +43,28 @@ client.on("messageCreate", async msg => {
                     // behold the river of if statements
                     if (lastMessage.author.username == msg.author.username) {
                         countDisc.send(`${deletedMsg.author}
-                                little over eager there, huh buddy? wait for someone else :heart:`
+                        \nlittle over eager there, huh buddy? wait for someone else :heart:`
                         );
                         return;
                     }
                     if (msg.content == parseInt(lastMessage.content)) {
-                        countDisc.send(`${deletedMsg.author}:
-                                woah woah woah, that's already taken`
+                        countDisc.send(`${deletedMsg.author}
+                        > ${deletedMsg.content}
+                        \nwoah woah woah, that's already taken`
                         );
                         return;
                     }
                     if (parseInt(msg.content)) {
-                        countDisc.send(`${deletedMsg.author}:
-                                oop, not time for that number right now`
+                        countDisc.send(`${deletedMsg.author}
+                        > ${deletedMsg.content}
+                        \noop, not time for that number right now`
                         );
                         return;
                     }
                     console.log(`Deleted message from ${deletedMsg.author.username}`);
-                    countDisc.send(`${deletedMsg.author}:
+                    countDisc.send(`${deletedMsg.author}
                     > ${deletedMsg.content}
-that doesn't look like a number :rage:`);
-                    // i hate string literals sometimes
+                    \nthat doesn't look like a number :rage:`);
                 })
                 .catch(console.error);
         }
