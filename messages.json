@@ -1,20 +1,32 @@
 {
     "header": [
         "{AUTHOR}",
-        "\n> {MSG}"
+        "> {MSG}"
     ],
     "content": {
         "sameAuthor": [
-            "\nlittle over eager there, huh buddy? wait for someone else :heart:"
+            "\nlittle over eager there! wait for someone else to go please :heart:",
+            "\nslow down! give someone else a chance :slight_smile:",
+            "\nWOAH THERE, it's not your turn anymore!",
+            "\ndo we need to stage an intervention? it's not your turn!"
         ],
         "takenNum": [
-            "\nwoah woah woah, that's already taken"
+            "\nwoah woah woah, that's already taken",
+            "\nsorry, that number's been taken!",
+            "\noop, that's been taken already!",
+            "\nyou're too slow to that number, try again!"
         ],
         "wrongNum": [
-            "\noop, not time for that number right now"
+            "\noop, not time for that number right now",
+            "\nit's not that number's time right now!",
+            "\ntry adding 1 to the last number instead :slight_smile:",
+            "\nunfortunately, that's not the right number :sob:"
         ],
         "notNum": [
-            "\nthat doesn't look like a number :rage:"
+            "\nthat doesn't look like a number :rage:",
+            "\nhow could you, you think i like *non-numbers?*",
+            "\nnumbers are my life, and you've broken that :pensive:",
+            "\nplease i'm begging you, use a number instead"
         ]
     }
 }
