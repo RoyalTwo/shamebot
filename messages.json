@@ -1,7 +1,7 @@
 {
     "header": [
         "{AUTHOR}",
-        "> {MSG}"
+        "\n> {MSG}"
     ],
     "content": {
         "sameAuthor": [

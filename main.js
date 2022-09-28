@@ -57,7 +57,6 @@ client.on("messageCreate", async msg => {
                 });
                 return;
             }
-
             if (msg.content == parseInt(lastMessage.content)) {
                 msg.delete().then(() => {
                     let rand = Math.floor(Math.random() * (resMessages.takenNum.length - 1));
