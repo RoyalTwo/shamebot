@@ -46,6 +46,7 @@ client.on("messageCreate", async msg => {
         else {
             msg.delete()
                 .then(deletedMsg => {
+                    console.log(deletedMsg.content[0]);
                     // behold the river of if statements
                     if (lastMessage.author.username == msg.author.username) {
                         let rand = Math.floor(Math.random() * (resMessages.sameAuthor.length - 1));
@@ -57,6 +58,11 @@ client.on("messageCreate", async msg => {
                         let rand = Math.floor(Math.random() * (resMessages.takenNum.length - 1));
                         countDisc.send(`${transformHeader(deletedMsg)}
                         ${resMessages.takenNum[rand]}`);
+                        return;
+                    }
+                    if (deletedMsg.content[0] == "0") {
+                        let rand = Math.floor(Math.random() * (resMessages.leadingZero.length - 1));
+                        countDisc.send(`${transformHeader(deletedMsg)} ${resMessages.takenNum[rand]}`);
                         return;
                     }
                     if (parseInt(msg.content)) {

@@ -27,6 +27,9 @@
             "\nhow could you, you think i like *non-numbers?*",
             "\nnumbers are my life, and you've broken that :pensive:",
             "\nplease i'm begging you, use a number instead"
+        ],
+        "leadingZero": [
+            "\ntry again without a leading zero :D"
         ]
     }
 }
