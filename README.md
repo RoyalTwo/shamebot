@@ -14,7 +14,7 @@ Features:
 
 **Super easy to add your own messages, follow the format in `messages.json`!**
 
-<img style="height:30px; display: block" alt="Fork repo" src="https://img.shields.io/github/forks/RoyalTwo/RTIW-Bot?color=lightblue&label=fork&style=for-the-badge"/>
+<img style="height:30px; display: block" alt="Fork repo" src="https://img.shields.io/github/forks/RoyalTwo/shamebot?color=lightblue&label=fork&style=for-the-badge"/>
 
 #### Uses:
 > **NodeJS, Discord's API, JavaScript**
