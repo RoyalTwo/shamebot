@@ -35,6 +35,6 @@ I will eventually hook it up to a database and make it more customizable by admi
 without having to go through code.
 
 ---
-<h6 align="center">❤️ Hope you enjoy, I know I enjoyed making it! ❤️</h6>
+<h6 align="center">❤️ this was fun! ❤️</h6>
 
 ---
