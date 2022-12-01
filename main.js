@@ -26,8 +26,8 @@ client.once('ready', async () => {
 
     // remove and switch to database
     // hyland server channels
-    countChan = await client.channels.fetch(process.env.COUNTING_CHANNEL);
-    countDisc = await client.channels.fetch(process.env.MESSAGE_CHANNEL);
+    countChan = await client.channels.fetch(process.env.ENV_COUNTING_CHANNEL);
+    countDisc = await client.channels.fetch(process.env.ENV_MESSAGE_CHANNEL);
 
     const lastMessageCollection = await countChan.messages.fetch({ limit: 1 });
     lastMessage = lastMessageCollection.first();
@@ -90,4 +90,4 @@ function transformHeader(msg) {
 }
 
 // eslint-disable-next-line no-undef
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.ENV_BOT_TOKEN);
