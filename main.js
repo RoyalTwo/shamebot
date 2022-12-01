@@ -1,5 +1,6 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
+console.log(process.env);
 import { Client, GatewayIntentBits } from 'discord.js';
 import fs from 'fs';
 
