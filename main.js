@@ -1,5 +1,6 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
+console.log(process.env);
 import { Client, GatewayIntentBits } from 'discord.js';
 import fs from 'fs';
 
@@ -26,12 +27,8 @@ client.once('ready', async () => {
 
     // remove and switch to database
     // hyland server channels
-    countChan = await client.channels.fetch('1007371696212279356');
-    countDisc = await client.channels.fetch('1022161639040102451');
-
-    // testing server channels
-    /* countChan = await client.channels.fetch('1004202416314515466');
-    countDisc = await client.channels.fetch('1003409641130164234'); */
+    countChan = await client.channels.fetch(process.env.ENV_COUNTING_CHANNEL);
+    countDisc = await client.channels.fetch(process.env.ENV_MESSAGE_CHANNEL);
 
     const lastMessageCollection = await countChan.messages.fetch({ limit: 1 });
     lastMessage = lastMessageCollection.first();
@@ -94,4 +91,4 @@ function transformHeader(msg) {
 }
 
 // eslint-disable-next-line no-undef
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.ENV_BOT_TOKEN);
