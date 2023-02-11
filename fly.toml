@@ -1,6 +1,6 @@
 # fly.toml file generated for shamebot1 on 2022-11-16T18:02:43-05:00
 
-app = "shamebot1"
+app = "shamebot"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
@@ -9,4 +9,3 @@ processes = []
 
 [experimental]
   allowed_public_ports = []
-  auto_rollback = true

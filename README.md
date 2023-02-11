@@ -18,6 +18,16 @@ Features:
 
 <img style="height:30px; display: block" alt="Fork repo" src="https://img.shields.io/github/forks/RoyalTwo/shamebot?color=lightblue&label=fork&style=for-the-badge"/>
 
+## Setup:
+
+1. If you plan to use `fly.io` for running your bot, create an account at fly.io, and under `Account`, generate a new token. Create a GitHub Secret called `FLY_API_TOKEN` with this value.
+1. Through the tutorial, use `flyctl launch` to create a new app named `shamebot`. If you do not create the account first, the build action will be unable to deploy when updates are made.
+1. Create a GitHub Secret called `COUNTING_CHANNEL` with the Numeric ID of your dedicated counting channel.
+1. Create a GitHub Secret called `MESSAGE_CHANNEL` with the Numeric ID of the channel you wish to send moderation messages (shame) to. Make sure this is a different channel than the `COUNTING_CHANNEL`!
+1. Create a Discord app in your developer portal, and create an associated bot account. Make sure you hang on to the tokens. Your bot will require the `Message Content Intent` permission. Use the OAuth panel to add the bot to your server.
+1. Create a GitHub Secret calls `BOT_TOKEN` with the API token from the Discord dev portal.
+1. Run the action in this repo to deploy to `fly.io`
+
 #### Uses:
 > **Fly.io, NodeJS, Discord's API, JavaScript**
 
